@@ -63,7 +63,7 @@ docker run -d \
 ```
 docker rename pervushin_da-custom-nginx-t2 custom-nginx-t2
 ```
-[Task2](https://github.com/Divan4eg/docker-hw/blob/main/img/1.png)
+![Task2](https://github.com/Divan4eg/docker-hw/blob/main/img/1.png)
 
 Задача 3
 Воспользуйтесь docker help или google, чтобы узнать как подключиться к стандартному потоку ввода/вывода/ошибок контейнера "custom-nginx-t2".
