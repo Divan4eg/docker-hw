@@ -154,8 +154,29 @@ docker rm -f custom-nginx-t2
 
 ### Решение 4
 
+Запустил контейнер centos с указанными параметрами:
+```
+docker run -d \
+    -v $(pwd):/data \
+    --name pda-centos \
+    centos:7 \
+    /bin/bash -c "while true; do sleep 1000; done"
+```
 
-Задача 5
+Запустил контейнер debian с указанными параметрами:
+```
+docker run -d \
+    -v $(pwd):/data \
+    --name pda-debian \
+    debian:12 \
+    /bin/bash -c "while true; do sleep 1000; done"
+```
+
+Выполнил все команды, прикладываю скриншот
+![Task3](https://github.com/Divan4eg/docker-hw/blob/main/img/10.png) 
+
+### Задача 5
+
 Создайте отдельную директорию(например /tmp/netology/docker/task5) и 2 файла внутри него. "compose.yaml" с содержимым:
 version: "3"
 services:
