@@ -58,10 +58,12 @@ docker run -d \
   --name "pervushin_da-custom-nginx-t2" \
   -p 8080:80 custom-nginx:1.0.0
 ```
-[Task2](https://github.com/Divan4eg/docker-hw/blob/main/custom-nginx/Dockerfile)
 
 2. Переименовал контейнер
-
+```
+docker rename pervushin_da-custom-nginx-t2 custom-nginx-t2
+```
+[Task2](https://github.com/Divan4eg/docker-hw/blob/main/img/1.png)
 
 Задача 3
 Воспользуйтесь docker help или google, чтобы узнать как подключиться к стандартному потоку ввода/вывода/ошибок контейнера "custom-nginx-t2".
