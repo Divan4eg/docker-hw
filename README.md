@@ -173,7 +173,7 @@ docker run -d \
 ```
 
 Выполнил все команды, прикладываю скриншот
-![Task3](https://github.com/Divan4eg/docker-hw/blob/main/img/10.png) 
+![Task4](https://github.com/Divan4eg/docker-hw/blob/main/img/10.png) 
 
 ### Задача 5
 
@@ -222,3 +222,31 @@ services:
 7. Удалите любой из манифестов компоуза(например compose.yaml). Выполните команду "docker compose up -d". Прочитайте warning, объясните суть предупреждения и выполните предложенное действие. Погасите compose-проект ОДНОЙ(обязательно!!) командой.
 
 В качестве ответа приложите скриншоты консоли, где видно все введенные команды и их вывод, файл compose.yaml , скриншот portainer c задеплоенным компоузом.
+
+### Решение 4
+
+1. При выполнении команды ```docker compose up -d``` будет запущен файл compose.yaml. Это происходит потому, что Docker Compose имеет предопределенный порядок поиска конфигурационных файлов:  
+- Первым приоритетом является канонический файл compose.yaml
+- Затем следуют другие варианты именования
+
+2. Для того чтобы запустить оба файла одной командой можно исправить файл compose.yaml ледующим образом
+```
+version: "3"
+include:
+  - docker-compose.yaml
+
+services:
+  portainer:
+    network_mode: host
+    image: portainer/portainer-ce:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+```
+
+3. Для заливки образа из задания 1 в локальный registry выполним команды
+```
+docker tag custom-nginx:1.0.0 localhost:5000/custom-nginx:latest
+docker push localhost:5000/custom-nginx:latest
+
+```
+![Task5](https://github.com/Divan4eg/docker-hw/blob/main/img/11.png) 
