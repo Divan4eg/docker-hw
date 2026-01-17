@@ -283,3 +283,8 @@ services:
 7. Появилось предупреждение с текстом   
 WARN[0000] Found orphan containers ([compose-portainer-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.  
 
+Это предупреждение появляется, когда есть контейнеры, которые были созданы ранее, но сейчас отсутствуют в текущей конфигурации.
+Чтобы удалить все контейнеры одной командой надо выполнить:
+```
+docker-compose down -v --remove-orphans
+```
