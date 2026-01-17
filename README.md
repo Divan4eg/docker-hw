@@ -223,7 +223,7 @@ services:
 
 В качестве ответа приложите скриншоты консоли, где видно все введенные команды и их вывод, файл compose.yaml , скриншот portainer c задеплоенным компоузом.
 
-### Решение 4
+### Решение 5
 
 1. При выполнении команды ```docker compose up -d``` будет запущен файл compose.yaml. Это происходит потому, что Docker Compose имеет предопределенный порядок поиска конфигурационных файлов:  
 - Первым приоритетом является канонический файл compose.yaml
@@ -247,6 +247,39 @@ services:
 ```
 docker tag custom-nginx:1.0.0 localhost:5000/custom-nginx:latest
 docker push localhost:5000/custom-nginx:latest
-
 ```
-![Task5](https://github.com/Divan4eg/docker-hw/blob/main/img/11.png) 
+![Task5](https://github.com/Divan4eg/docker-hw/blob/main/img/11.png)
+
+4. Portainer заработал только в такой конфигурации файла compose.yaml
+```
+version: "3"
+include:
+  - docker-compose.yaml
+
+services:
+  portainer:
+#    network_mode: host
+    image: portainer/portainer-ce:latest
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+```
+
+5. Задеплоить смог только в текущем виде
+```
+version: '3'
+
+services:
+  nginx:
+    image: localhost:5000/custom-nginx
+    ports:
+      - "9090:80"
+```
+
+6. Прикладываю скриншот
+![Task5](https://github.com/Divan4eg/docker-hw/blob/main/img/12.png)
+
+7. Появилось предупреждение с текстом   
+WARN[0000] Found orphan containers ([compose-portainer-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.  
+
