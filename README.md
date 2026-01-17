@@ -50,7 +50,17 @@ docker build -t custom-nginx:1.0.0 .
 
 В качестве ответа приложите скриншоты консоли, где видно все введенные команды и их вывод.
 
-### Решение 1
+### Решение 2
+
+1. Запустил контейнер командой
+```
+docker run -d \
+  --name "pervushin_da-custom-nginx-t2" \
+  -p 8080:80 custom-nginx:1.0.0
+```
+[Task2](https://github.com/Divan4eg/docker-hw/blob/main/custom-nginx/Dockerfile)
+
+2. Переименовал контейнер
 
 
 Задача 3
